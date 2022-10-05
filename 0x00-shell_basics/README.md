@@ -1,1 +1,1 @@
-Changing the current working directory to the previous one
+listing all files hidden in the current directory and the root directory and the boot directory
