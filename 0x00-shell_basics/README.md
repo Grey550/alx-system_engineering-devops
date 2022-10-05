@@ -1,1 +1,1 @@
-Creating a script that creates 3 directories
+Life is a series of commas, not periods
