@@ -1,1 +1,1 @@
-Creating first directory in Tmp
+Moving betty to first directory
