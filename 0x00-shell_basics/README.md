@@ -1,1 +1,1 @@
-Creating a script that deletes all the files that end with ~
+Creating a script that creates 3 directories
