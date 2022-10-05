@@ -1,1 +1,1 @@
-Creating a symbolic link
+Copying all the new html files to the parent directory
