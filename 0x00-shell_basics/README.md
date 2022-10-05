@@ -1,1 +1,1 @@
-Writing a script that prints the abolute path name of the current working directory
+Displaying the contents list of the current directory
