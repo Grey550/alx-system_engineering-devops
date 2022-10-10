@@ -1,2 +1,2 @@
 #!/bin/bash
-find -tyoe d -not -name . | wc -|
+find -type d -path './*' -print | wc -l
