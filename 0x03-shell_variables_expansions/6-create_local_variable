@@ -1,0 +1,2 @@
+#!/bin/bash
+echo {$NAME="Best":$VALUE="School"}
