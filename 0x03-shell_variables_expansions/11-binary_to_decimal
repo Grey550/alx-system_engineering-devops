@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(($base2 + $base10))
+echo $((2#$BINARY))
