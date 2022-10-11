@@ -1,2 +1,2 @@
 #!/bin/bash
-echo {$NAME="Best":$VALUE="School"}
+echo $NAME "Best" = $VALUE "School"
