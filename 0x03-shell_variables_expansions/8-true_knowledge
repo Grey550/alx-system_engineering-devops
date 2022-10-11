@@ -1,0 +1,2 @@
+#!/bin/bash
+printf $(("%n\n", VALUE + 128))
