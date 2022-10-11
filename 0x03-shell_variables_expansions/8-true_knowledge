@@ -1,2 +1,2 @@
 #!/bin/bash
-printf $(("%n\n", VALUE + 128))
+printf $((TRUEKNOWLEDGE + 128))
