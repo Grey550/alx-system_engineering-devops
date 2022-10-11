@@ -1,2 +1,2 @@
 #!/bin/bash
-set $NAME"BEST"=$VALUE"School"
+export $NAME"BEST"=$VALUE"School"
