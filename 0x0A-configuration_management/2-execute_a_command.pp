@@ -1,6 +1,6 @@
 # Creating manifest that kills a process
 
-exec { 'pkill killmenow':
-  command   => 'pkill killmenow',
-  provider  => 'shell'
+exec { 'pkill':
+  command   => '/usr/bin/pkill -f killmenow',
+  provider  => 'shell',
 }
