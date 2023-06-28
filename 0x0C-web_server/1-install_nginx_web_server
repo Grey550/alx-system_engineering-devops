@@ -7,7 +7,6 @@
 
 sudo apt-get -y update
 sudo apt-get install -y nginx
-mkdir /etc/nginx/html
 echo "Hello World!" > /etc/nginx/html/index.html
 
 
@@ -22,4 +21,4 @@ echo "server {
 }
 " > /etc/nginx/sites-available/default
 
-nginx -s reload
+service nginx restart
