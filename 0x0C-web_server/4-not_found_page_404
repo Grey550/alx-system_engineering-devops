@@ -7,8 +7,25 @@ sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 echo "Hello World" | sudo tee /var/www/html/index.html
 sudo sh -c "echo \"Ceci n'est pas une page\" > /var/www/html/404.html"
+SERVER_CONFIG="server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	# Add index.php to the list if you are using PHP
+	index index.html index.htm index.nginx-debian.html;
 
-sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;' /etc/nginx/sites-available/default
-sudo sed -i '/server_name _;/a error_page 404 /404.html;\nlocation = /404.html {\n    internal;\n    add_header Content-Type text/plain;\n    return 404 '\''Ceci n'\'\''est pas une page'\'';\n}' /etc/nginx/sites-available/default
+	server_name _;
+
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+	if (\$request_filename ~ redirect_me){
+			rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+	}
+	error_page 404 /404.html;
+	location = /404.html{
+		internal;
+	}
+}"
+sudo sh -c "echo '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
 sudo service nginx restart
-
