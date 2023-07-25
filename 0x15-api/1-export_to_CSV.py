@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Script that uses REST API to return employee's information"""
+"""Export data into CSV format"""
+import csv
 import requests
 import sys
 
@@ -8,15 +9,18 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com"
     user_id = int(sys.argv[1])
     user_endpoint = "{}/users/{}".format(url, user_id)
-    name = requests.get(user_endpoint).json().get("name")
+    username = requests.get(user_endpoint).json().get("username")
     tasks_endpoint = "{}/todos".format(url)
     tasks = requests.get(tasks_endpoint).json()
-    user_tasks = [dict for dict in tasks
-                  if dict.get("userId") == user_id]
-    tasks_completed = [dict for dict in user_tasks
-                       if dict.get("completed") is True]
-    print("Employee {} is done with tasks({}/{}):"
-          .format(name, len(tasks_completed), len(user_tasks)))
+    user_tasks = [[user_id, username, task.get("completed"),
+                  task.get("title")] for task in tasks
+                  if user_id == task.get("userId")
+                  ]
 
-    for task in tasks_completed:
-        print("\t {}".format(task.get("title")))
+    """Save in Json file"""
+
+    with open("{}.csv".format(user_id), 'w', newline='') as file:
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+
+        for row in user_tasks:
+            writer.writerow(row)
