@@ -22,4 +22,3 @@ if __name__ == "__main__":
     with open("{}.json".format(user_id), 'w',
               encoding="utf-8") as file:
         json.dump(user_tasks, file)
-
